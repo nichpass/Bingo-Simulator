@@ -1,6 +1,9 @@
 from tkinter import *
 from src.board import Board
 
+def updateBoards():
+    pass
+
 root = Tk()
 root.geometry("500x500")
 root.title("BINGO Game")
@@ -22,6 +25,11 @@ buttonFrame.pack()
 board1.render()
 board2.render()
 board3.render()
+
+gameButtonFrame = Frame(root)
+singleIterButton = Button(gameButtonFrame, text="Call a value", command=updateBoards).pack(side=LEFT)
+finishGameButton = Button(gameButtonFrame, text="Call until end", command=updateBoards).pack(side=LEFT)
+gameButtonFrame.place(relx=0.5, rely=0.9, anchor=S)
 
 root.mainloop()
 

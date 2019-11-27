@@ -18,11 +18,21 @@ class Board:
         self.tileSection.config(highlightbackground="black", highlightthickness=1)
 
         self.tiles = []
-        self. hasWon = False
+        self.hasBingo = False
 
         self.fillHeader()
         self.fillBoard()
 
+
+    def hasBingo(self):
+        return self.hasBingo
+
+
+    def updateTiles(self, tileVal):
+        for r in range(ROW_SIZE):
+            for c in range(COL_SIZE):
+                if self.tiles[r][c].getValue() == tileVal:
+                    pass # TODO finish this method, then the random generator one
 
     def render(self):
         self.boardFrame.place(relx=0.5, rely=0.2, anchor=N)
@@ -30,6 +40,7 @@ class Board:
 
     def focus(self):
         self.boardFrame.lift()
+
 
     def fillHeader(self):
         self.title = Label(self.boardFrame, text="Board #%d" % self.id, borderwidth=1)
