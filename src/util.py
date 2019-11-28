@@ -9,6 +9,10 @@ for i in range(1, 4):
                 val = "%s%d" % (char, i)
                 tileValues.append(val)
 
+testTiles = []
+for i in range(5):
+    for j in range(5):
+        testTiles.append("%s%s"%(i,j))
 
 class Utility:
 
@@ -19,6 +23,7 @@ class Utility:
 
     @staticmethod
     def singleIteration(boards):
+        print("single iter called")
         tileVal = Utility.genRandomTile()
         Utility.updateBoards(boards, tileVal)
 
@@ -26,7 +31,7 @@ class Utility:
     @staticmethod
     def genRandomTile():
         num = randint(0, 63)
-        return tileValues[randint]
+        return tileValues[num]
 
 
     @staticmethod

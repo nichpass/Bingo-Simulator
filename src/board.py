@@ -1,6 +1,7 @@
 from tkinter import *
+from random import randint
 from src.tile import Tile
-
+from src.util import tileValues, Utility
 
 ROW_SIZE = 5
 COL_SIZE = 5
@@ -29,10 +30,14 @@ class Board:
 
 
     def updateTiles(self, tileVal):
+
         for r in range(ROW_SIZE):
             for c in range(COL_SIZE):
                 if self.tiles[r][c].getValue() == tileVal:
-                    pass # TODO finish this method, then the random generator one
+                    print("updating tile: " + self.tiles[r][c].getValue())
+                    self.tiles[r][c].setSelected()
+                    self.tiles[r][c].getLabel().config(bg='red')
+
 
     def render(self):
         self.boardFrame.place(relx=0.5, rely=0.2, anchor=N)
@@ -51,10 +56,13 @@ class Board:
 
 
     def fillBoard(self):
+        tileVals = tileValues[:]
         for r in range(ROW_SIZE):
             tilerow = []
             for c in range(COL_SIZE):
-                tilerow.append(Tile(self.tileSection, "%s%s" % (r, c), r, c))
+                index = randint(0, len(tileVals)-1)
+                tilerow.append(Tile(self.tileSection, tileVals[index], r, c))
+                tileVals.pop(index)
             self.tiles.append(tilerow)
 
         self.tileSection.pack()

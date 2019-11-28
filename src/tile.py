@@ -13,4 +13,12 @@ class Tile:
         self.label.config(relief="solid", borderwidth=1)
         self.label.grid(row=r, column=c)
 
+    def setSelected(self):
+        self.isSelected = True
+
+    def getLabel(self):
+        return self.label
+
+    def getValue(self):
+        return self.value
 
