@@ -30,8 +30,8 @@ board2.render()
 board3.render()
 
 gameButtonFrame = Frame(root)
-singleIterButton = Button(gameButtonFrame, text="Call a value", command=lambda: Utility.singleIteration(boardsList)).pack(side=LEFT)
-finishGameButton = Button(gameButtonFrame, text="Call until end", command=updateBoards).pack(side=LEFT)
+singleIterButton = Button(gameButtonFrame, text="Call A Value", command=lambda: Utility.singleIteration(boardsList)).pack(side=LEFT)
+finishGameButton = Button(gameButtonFrame, text="Call Until End", command=lambda: Utility.completeGame(boardsList)).pack(side=LEFT)
 gameButtonFrame.place(relx=0.5, rely=0.9, anchor=S)
 
 root.mainloop()

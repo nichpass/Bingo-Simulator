@@ -16,6 +16,9 @@ class Tile:
     def setSelected(self):
         self.isSelected = True
 
+    def getSelectionVal(self):
+        return self.isSelected
+
     def getLabel(self):
         return self.label
 
