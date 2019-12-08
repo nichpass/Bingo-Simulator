@@ -1,38 +1,42 @@
 from tkinter import *
-from src.board import Board
-from src.util import Utility
+from board import Board
+from util import Utility
 
 def updateBoards():
     pass
 
 root = Tk()
-root.geometry("500x500")
+root.geometry("1000x500")
 root.title("BINGO Game")
 
 bingoTitle = Label(root, text="BINGO", borderwidth=1)
 bingoTitle.config(font=("Helvetica", 32))
 bingoTitle.pack()
 
-board3 = Board(root, 3)
-board2 = Board(root, 2)
-board1 = Board(root, 1)
+
+
+boardFrame = Frame(root)
+board3 = Board(boardFrame, 3)
+board2 = Board(boardFrame, 2)
+board1 = Board(boardFrame, 1)
 
 boardsList = [board1, board2, board3]
 
-buttonFrame = Frame(root)
-boardButton1 = Button(buttonFrame, text="Board 1", command=board1.focus).pack(side=LEFT)
-boardButton2 = Button(buttonFrame, text="Board 2", command=board2.focus).pack(side=LEFT)
-boardButton3 = Button(buttonFrame, text="Board 3", command=board3.focus).pack(side=LEFT)
-buttonFrame.pack()
+board1.boardFrame.pack(side=LEFT, expand=YES, padx=10)
+board2.boardFrame.pack(side=LEFT, expand=YES, padx=10)
+board3.boardFrame.pack(side=LEFT, expand=YES, padx=10)
+boardFrame.pack()
 
-board1.render()
-board2.render()
-board3.render()
+buttonFrame = Frame(root, pady=20)
+boardButton1 = Button(buttonFrame, text="Board 1", command=Utility.updateHardware(board1)).pack(side=LEFT)
+boardButton2 = Button(buttonFrame, text="Board 2", command=Utility.updateHardware(board2)).pack(side=LEFT)
+boardButton3 = Button(buttonFrame, text="Board 3", command=Utility.updateHardware(board3)).pack(side=LEFT)
+buttonFrame.pack()
 
 gameButtonFrame = Frame(root)
 singleIterButton = Button(gameButtonFrame, text="Call A Value", command=lambda: Utility.singleIteration(boardsList)).pack(side=LEFT)
 finishGameButton = Button(gameButtonFrame, text="Call Until End", command=lambda: Utility.completeGame(boardsList)).pack(side=LEFT)
-gameButtonFrame.place(relx=0.5, rely=0.9, anchor=S)
+gameButtonFrame.pack()
 
 root.mainloop()
 
