@@ -15,6 +15,6 @@ run this code on a regular PC to use the GUI alone, then you must comment out al
 
 #### The simulation results
 
-The file `Stat Analysis Results.pdf` contains the results of the execution of 'src/STATmain', which runs the bingo game
+The file `Stat Analysis Results.pdf` contains the results of the execution of `src/STATmain`, which runs the bingo game
 a specified number of times, for a specified number of boards, counting how many times each board won and the average
 number of tiles that need to be called before a winner is determined. This file can be run from a PC without any modification
