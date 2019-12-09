@@ -5,9 +5,6 @@ boards used on a breadboard containing a 5x5 grid of LED's
 
 ### Running the code
 
-
-#### Running the Code
-
 #### The interactive game
 
 The simulator is designed to be entirely run from a raspberry pi 3 connected to a breadboard with LED's arranged in a
