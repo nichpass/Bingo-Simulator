@@ -24,4 +24,3 @@ class Tile:
 
     def getValue(self):
         return self.value
-

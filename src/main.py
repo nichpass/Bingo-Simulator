@@ -2,9 +2,8 @@ from tkinter import *
 from board import Board
 from util import Utility
 
-def updateBoards():
-    pass
 
+Utility.initHardware()
 root = Tk()
 root.geometry("1000x500")
 root.title("BINGO Game")
@@ -28,9 +27,9 @@ board3.boardFrame.pack(side=LEFT, expand=YES, padx=10)
 boardFrame.pack()
 
 buttonFrame = Frame(root, pady=20)
-boardButton1 = Button(buttonFrame, text="Board 1", command=Utility.updateHardware(board1)).pack(side=LEFT)
-boardButton2 = Button(buttonFrame, text="Board 2", command=Utility.updateHardware(board2)).pack(side=LEFT)
-boardButton3 = Button(buttonFrame, text="Board 3", command=Utility.updateHardware(board3)).pack(side=LEFT)
+boardButton1 = Button(buttonFrame, text="Board 1", command=lambda: Utility.updateHardware(board1)).pack(side=LEFT)
+boardButton2 = Button(buttonFrame, text="Board 2", command=lambda: Utility.updateHardware(board2)).pack(side=LEFT)
+boardButton3 = Button(buttonFrame, text="Board 3", command=lambda: Utility.updateHardware(board3)).pack(side=LEFT)
 buttonFrame.pack()
 
 gameButtonFrame = Frame(root)
@@ -38,5 +37,5 @@ singleIterButton = Button(gameButtonFrame, text="Call A Value", command=lambda: 
 finishGameButton = Button(gameButtonFrame, text="Call Until End", command=lambda: Utility.completeGame(boardsList)).pack(side=LEFT)
 gameButtonFrame.pack()
 
+root.protocol("WM_DELETE_WINDOW", lambda: Utility.turnOffLEDs(root))
 root.mainloop()
-
