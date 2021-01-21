@@ -8,7 +8,7 @@ game itself.
 ### Running the code
 
 While this code was initially designed to run on a Raspberry Pi in conjunction with LED's on a breadboard,
-I have modified it to simply run on a computer (commented out anything hardware related). To see the demonstration, run `src/python main.py` to
+I have modified it to simply run on a computer (commented out anything hardware related). To see the demonstration, run `src/main.py` to
 start up the GUI.
 
 ### The interactive game
