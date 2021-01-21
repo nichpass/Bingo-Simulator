@@ -19,16 +19,16 @@ The raspberry pi should also be connected to a monitor / keyboard so that the GU
 
 ### The simulation results
 
-The file `Stat Analysis Results.pdf` contains the results of the repeated execution of `src/STATmain`, which runs the bingo game
+The file `Stat Analysis Results.pdf` contains the results of the repeated execution of `src/STATmain.py`, which runs the bingo game
 a specified number of times, for a specified number of boards, counting how many times each board won and the average
 number of tiles that need to be called before a winner is determined. The results show a logarithmic relationship between
-the number of boardsa and the number of tiles called out before a winner occurred.
+the number of boards and the number of tiles called out before a winner occurred.
 
 ### Improvements that could have been made
 
 The initial game was created with a focus on GUI output and LED output, not on the simulation of many games across
 varying amounts of boards, which is why there are duplicate classes for util, board, and main. In hindsight, I should have
-created a parent class that the display version and statistical versions inheritted from. Luckily the project was small
+created a parent class that the display version and statistical version inheritted from. Luckily the project was small
 enough that this didn't pose any large issues.
 
 ### Concluding thoughts
