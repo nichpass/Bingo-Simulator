@@ -6,18 +6,10 @@ from STATutil import tileValues, Utility
 ROW_SIZE = 5
 COL_SIZE = 5
 
-
 class Board:
 
     def __init__(self, master, num, tiles = None):
         self.id = num
-        #self.master = master
-        #self.boardFrame = Frame(self.master)
-        #self.boardFrame.config(highlightbackground="black", highlightthickness=2)
-
-        #self.tileSection = Frame(self.boardFrame)
-        #self.tileSection.config(highlightbackground="black", highlightthickness=1)
-
         self.tiles = []
         if tiles is not None:
             self.tiles = tiles[:]
@@ -25,7 +17,6 @@ class Board:
             self.fillBoard()
         self.bingoStatus = False
 
-        #self.fillHeader()
 
     def getMaster(self):
         return self.master
@@ -70,14 +61,13 @@ class Board:
             self.bingoStatus = True
         return self.bingoStatus
 
+
     def updateTiles(self, tileVal):
 
         for r in range(ROW_SIZE):
             for c in range(COL_SIZE):
                 if self.tiles[r][c].getValue() == tileVal:
-                    # print("updating tile: " + self.tiles[r][c].getValue())
                     self.tiles[r][c].setSelected()
-                    #self.tiles[r][c].getLabel().config(bg='red')
 
         self.checkBingo()
 
@@ -92,8 +82,6 @@ class Board:
 
     def fillHeader(self):
         self.title = Label(self.boardFrame, text="Board #%d" % self.id, borderwidth=1)
-        #self.title.config(relief="solid", borderwidth=1)
-
         self.title.config(font=("Helvetica", 26))
         self.title.pack()
 
@@ -108,7 +96,6 @@ class Board:
                 tileVals.pop(index)
             self.tiles.append(tilerow)
 
-        #self.tileSection.pack()
 
     def getId(self):
         return self.id

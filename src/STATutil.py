@@ -1,7 +1,9 @@
 from random import randint
 from string import ascii_lowercase
 import tkinter
-# using 64 possible tile values across the 75 tiles (25 tiles in each 5x5 board)
+
+# using 64 possible tile values across the 75 tiles (25 tiles in each 5x5 board)  a1-z1, b2-z2, a3-l3
+
 tileValues = []
 for i in range(1, 4):
     for char in ascii_lowercase:
@@ -24,11 +26,13 @@ class Utility:
             Utility.singleIteration(boards)
         return counter
 
+
     @staticmethod
     def singleIteration(boards):
         tileVal = Utility.genRandomTile()
         Utility.updateBoards(boards, tileVal)
         Utility.checkWinner(boards)
+
 
     @staticmethod
     def genRandomTile():

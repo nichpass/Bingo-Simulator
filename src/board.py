@@ -28,6 +28,7 @@ class Board:
     def getMaster(self):
         return self.master
 
+
     def hasBingo(self):
         return self.bingoStatus
 
@@ -70,6 +71,7 @@ class Board:
             self.bingoStatus = True
         return self.bingoStatus
 
+
     def updateTiles(self, tileVal):
 
         for r in range(ROW_SIZE):
@@ -110,8 +112,16 @@ class Board:
 
         self.tileSection.pack()
 
+
+    def reset(self):
+        self.tiles = []
+        self.bingoStatus = False
+        self.fillBoard()
+
+
     def getId(self):
         return self.id
+
 
     def getTiles(self):
         return self.tiles

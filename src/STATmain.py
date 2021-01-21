@@ -6,12 +6,13 @@ def updateBoards():
     pass
 
 counter = 0
-tests = 100
+tests = 20
 numBoards = 6
 boardsWinList = [0] * numBoards
 
 numCalls = 0
 
+# repeatedly run the game and save the results
 while counter < tests:
 
     root = Tk()
@@ -26,25 +27,22 @@ while counter < tests:
         if i in Utility.checkWinner(boardsList):
             boardsWinList[i] += 1
 
+# generate headers for output  'B0  B1 ... B10' and so on
 headerString = "Boards: "
 for i in range(numBoards):
     headerString += "B%d   " % i
 print(headerString)
 
+# record the percentage of games won by each board
 winPercentages = []
 for i in range(numBoards):
     winPercentages.append(boardsWinList[i] / tests * 100)
 
+# create the output string to display percentage of games won by each board
 winString = "Wins:   "
 for i in range(numBoards):
     winString += "%d%%  " % winPercentages[i]
+
+# display the results
 print(winString)
-
-'''print(tests,'Tests  ','B1', ' B2', ' B3')
-print('Wins:','    ', b1wins,' ', b2wins,' ', b3wins)
-p1 = str(round(100*b1wins/tests))
-p2 = str(round(100*b2wins/tests))
-p3 = str(round(100*b3wins/tests))
-print('Win Rate:', p1+'%', p2+'%', p3+'%')'''
-
-print("average num calls: " + str(numCalls / tests))
+print("Average Number of Calls: " + str(numCalls / tests))

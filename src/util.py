@@ -1,8 +1,9 @@
 from random import randint
 from string import ascii_lowercase
 from win_window import WinWindow
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import time
+
 # using 64 possible tile values across the 75 tiles (25 tiles in each 5x5 board)
 tileValues = []
 for i in range(1, 4):
@@ -16,6 +17,7 @@ for i in range(5):
     for j in range(5):
         testTiles.append("%s%s" % (i, j))
 
+gameComplete = False
 
 class Utility:
 
@@ -26,36 +28,55 @@ class Utility:
             Utility.singleIteration(boards)
             # boards[0].getMaster().after(20, None)
 
+
     @staticmethod
     def singleIteration(boards):
         tileVal = Utility.genRandomTile()
         Utility.updateBoards(boards, tileVal)
         Utility.checkWinner(boards)
 
+
     @staticmethod
     def genRandomTile():
         num = randint(0, 63)
         return tileValues[num]
+
 
     @staticmethod
     def updateBoards(boards, tileVal):
         for board in boards:
             board.updateTiles(tileVal)
 
+
     @staticmethod
     def checkWinner(boards):
+        global gameComplete
         winners = []
         for board in boards:
             if board.hasBingo():
                 winners.append(board)
 
-        if len(winners) > 0:
+        if len(winners) > 0 and not gameComplete:
             winWindow = WinWindow(winners, winners[0].getMaster())
             for winner in winners:
                 print("Board #%d is a winner!" % winner.getId())
+            gameComplete = True
+
+
+    @staticmethod
+    def restartGame(boards):
+        global gameComplete
+        gameComplete = False
+        for board in boards:
+            board.reset()
+
 
     @staticmethod
     def updateHardware(board):
+        '''
+        This function tells LED's on breadboard to output high (aka turn on) or low (off) depending on status of tile
+        This function and those below it are not called at the moment since running this code requires setting up a breadboard
+        '''
         pass
         tiles = board.getTiles()
         counter = 2
@@ -67,9 +88,8 @@ class Utility:
                 counter += 1
 
         for i in range(2, 27):
-            # GPIO.output(i, id_map[i])
             GPIO.output(i, id_map[i])
-            #time.sleep(1)
+
 
     @staticmethod
     def initHardware():
